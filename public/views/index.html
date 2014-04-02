@@ -1,7 +1,16 @@
 <section data-ng-controller="IndexController">
 	<h1>This is the home view</h1>
 	<div>
-		<textarea></textarea>
-		<button class="btn btn-default btn-sm" ng-click="showCharts()">Show Chart</button>
+		<textarea ng-model="content" id="content"></textarea>
+		<button class="btn btn-default btn-sm" ng-click="create()">Save Chart</button>
+		<!-- <button class="btn btn-default btn-sm" ng-click="showCharts()">Show Chart</button> -->
+	</div>
+	<div>
+		List of charts:
+		<ul data-ng-init="find()">
+			<li data-ng-repeat="chart in charts">
+				<div>{{chart.content}}</div>
+			</li>
+		</ul>
 	</div>
 </section>

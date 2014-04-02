@@ -1,11 +1,7 @@
 'use strict';
 
-angular.module('mean.system').controller('IndexController', ['$scope', 'Global', 'Charts', function ($scope, Global) {
+angular.module('mean.system').controller('IndexController', ['$scope', 'Global', 'Charts', function ($scope, Global, Charts) {
     $scope.global = Global;
-
-    $scope.showCharts = function(){
-    	alert('Keep it comming!');
-    };
 
     $scope.create = function() {
         var chart = new Charts({
@@ -16,6 +12,14 @@ angular.module('mean.system').controller('IndexController', ['$scope', 'Global',
         });
 
         this.content = '';
+
+        $scope.find();
+    };
+
+    $scope.find = function() {
+        Charts.query(function(charts) {
+            $scope.charts = charts;
+        });
     };
 
 }]);
